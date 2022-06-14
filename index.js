@@ -726,11 +726,11 @@ class PDFDocumentWithTables extends PDFDocument {
             }
     
             // bold
-            if( String(text).indexOf('bold:') === 0 ){
+            if( String(text).indexOf('bold:') !== -1 ){
               this.font('Helvetica-Bold');
               text = text.replace('bold:','');
             }
-            if( String(text).indexOf('regular:') === 0 ){
+            if( String(text).indexOf('regular:') !== -1 ){
               this.font('Helvetica');
               text = text.replace('regular:','');
             }
