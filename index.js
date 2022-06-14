@@ -365,6 +365,7 @@ class PDFDocumentWithTables extends PDFDocument {
             }
     
             text = String(text).replace('bold:','').replace('size','');
+            text = String(text).replace('regular:','').replace('size','');
             
             // cell padding
             cellp = prepareCellPadding(table.headers[i].padding || options.padding || 0);
@@ -728,6 +729,10 @@ class PDFDocumentWithTables extends PDFDocument {
             if( String(text).indexOf('bold:') === 0 ){
               this.font('Helvetica-Bold');
               text = text.replace('bold:','');
+            }
+            if( String(text).indexOf('regular:') === 0 ){
+              this.font('Helvetica-Regular');
+              text = text.replace('regular:','');
             }
     
             // size
