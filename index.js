@@ -791,15 +791,15 @@ class PDFDocumentWithTables extends PDFDocument {
                       }
                     )
                   );
-                  console.log(replacedArray[0]);
+                  console.log("Replaced Array 0", replacedArray[0]);
                 } else {
                   replacedArray.push(`.text("${item}")`);
                 }
               });
-              console.log(replacedArray);
+              console.log("Replaced Array All", replacedArray);
               //replacedArray[0];
               eval(replacedArray[0]);
-              // eval(replacedArray[1]);
+              eval(replacedArray[1]);
             } else {
               // regex word between two starts.
               // else below
