@@ -810,9 +810,9 @@ class PDFDocumentWithTables extends PDFDocument {
                   } else if (index % 2 === 1) {
                     if (index + 1 === splitByRegexArray.length) {
                       console.log("last part");
-                      this.font(options.fontBold).text(item, { continued: false });
+                      this.font(options.fontBold).text(item, { continued: false }).font(options.fontRegular);
                     } else {
-                      this.font(options.fontBold).text(item, { continued: true });
+                      this.font(options.fontBold).text(item, { continued: true }).font(options.fontRegular);
                     }
                   } else {
                     if (index + 1 === splitByRegexArray.length) {
@@ -833,10 +833,10 @@ class PDFDocumentWithTables extends PDFDocument {
                     width: width - (cellPadding.left + cellPadding.right),
                     align: align,
                   }
-                );
+                ).font(options.fontRegular);
               }
               if (lineIndex !== splitByNewLines.length - 1) {
-                this.moveDown();
+                this.moveDown().font(options.fontRegular);
               }
             });
             // With new line support
