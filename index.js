@@ -780,6 +780,7 @@ class PDFDocumentWithTables extends PDFDocument {
               for (text in splitByRegexArray) {
                 console.log(text)
                 if (text === 0) {
+                  console.log("first part")
                   replacedArray.push(
                     this.text(
                       text,
@@ -792,6 +793,7 @@ class PDFDocumentWithTables extends PDFDocument {
                       }
                     )
                   );
+                  console.log(replacedArray[0])
                 }
                 if (text > 0) {
                   replacedArray.push(`.text("${splitByRegexArray[text]}")`);
