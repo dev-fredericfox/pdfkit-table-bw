@@ -398,7 +398,7 @@ class PDFDocumentWithTables extends PDFDocument {
               align: "left",
             });
 
-            result = Math.max(result, cellHeight*options.cellHeightFactor);
+            result = Math.max(result, cellHeight*row.options.cellHeightFactor ?? options.cellHeightFactor);
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
