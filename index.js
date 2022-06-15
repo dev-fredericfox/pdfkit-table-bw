@@ -397,8 +397,8 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            console.log(cell?.options?.cellHeightFactor)
-            console.log(cell?.options)
+            console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor)
+            console.log("options: ",cell?.options)
             result = Math.max(result, cellHeight*options.cellHeightFactor);
           });
 
