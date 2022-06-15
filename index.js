@@ -791,15 +791,18 @@ class PDFDocumentWithTables extends PDFDocument {
                       }
                     )
                   );
-                  console.log("Replaced Array 0", replacedArray[0]);
+                  // console.log("Replaced Array 0", replacedArray[0]);
+                } else if (index === 1) {
+                  replacedArray.push(this.font("Helvetica-Bold").text(item, {continued: true}));
                 } else {
-                  replacedArray.push(this.text(item));
+                  replacedArray.push(this.font("Helvetica").text(item, {continued: true}));
                 }
               });
-              console.log("Replaced Array All", replacedArray);
+              // console.log("Replaced Array All", replacedArray);
               //replacedArray[0];
               eval(replacedArray[0]);
               eval(replacedArray[1]);
+              eval(replacedArray[2]);
             } else {
               // regex word between two starts.
               // else below
