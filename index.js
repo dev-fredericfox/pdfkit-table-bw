@@ -392,7 +392,7 @@ class PDFDocumentWithTables extends PDFDocument {
             // console.log(cellp);
 
             // calc height size of string
-            const cellHeight = this.heightOfString(text, {
+            const cellHeight = this.fontSize(size).heightOfString(text, {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
