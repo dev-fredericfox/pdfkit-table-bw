@@ -793,9 +793,9 @@ class PDFDocumentWithTables extends PDFDocument {
                   replacedArray.push('.text(splitByRegexArray[text])')
                 }
               }
-              splitByRegexArray[0]
-              eval(splitByRegexArray[1])
-              eval(splitByRegexArray[0])
+              replacedArray[0]
+              eval(replacedArray[1])
+              eval(replacedArray[0])
             } else {
               // regex word between two starts.
               // else below
