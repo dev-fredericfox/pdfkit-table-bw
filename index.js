@@ -797,7 +797,7 @@ class PDFDocumentWithTables extends PDFDocument {
               }
               //replacedArray[0];
               eval(replacedArray[0]);
-              eval(replacedArray[1]);
+              // eval(replacedArray[1]);
               
             } else {
               // regex word between two starts.
