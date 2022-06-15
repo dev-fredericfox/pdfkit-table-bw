@@ -791,9 +791,17 @@ class PDFDocumentWithTables extends PDFDocument {
                   );
                   // console.log("Replaced Array 0", replacedArray[0]);
                 } else if (index % 2 === 1) {
-                  this.font("Helvetica-Bold").text(item, { continued: true });
+                  if (index + 1 === splitByRegexArray.length) {
+                    this.font("Helvetica-Bold").text(item, { continued: false });
+                  } else {
+                    this.font("Helvetica-Bold").text(item, { continued: true });
+                  }
                 } else {
-                  this.font("Helvetica").text(item, { continued: true });
+                  if (index + 1 === splitByRegexArray.length) {
+                    this.font("Helvetica").text(item, { continued: false });
+                  } else {
+                    this.font("Helvetica").text(item, { continued: true });
+                  }
                 }
               });
               // console.log("Replaced Array All", replacedArray);
