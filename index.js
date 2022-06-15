@@ -382,7 +382,8 @@ class PDFDocumentWithTables extends PDFDocument {
               // apply font size on calc about height row
               console.log("Log Start");
               cell.hasOwnProperty("options") && prepareRowOptions(cell);
-              cell.hasOwnProperty("options") && console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor);
+              cell.hasOwnProperty("options") &&
+                console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor);
               cell.hasOwnProperty("options") && console.log("options: ", cell?.options);
               cell.hasOwnProperty("options") && console.log("cell start");
               cell.hasOwnProperty("options") && console.log("cell: ", cell);
@@ -403,8 +404,14 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            console.log(cellHeight)
-            result = Math.max(result, cellHeight * options.cellHeightFactor);
+            const cellHeightModifier = (cellHeight) => {
+              if (cellHeight > 170) {
+                return cellHeight * 1;
+              } else {
+                return cellHeight * 1.3;
+              }
+            };
+            result = Math.max(result, cellHeightModifier(cellHeight));
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
