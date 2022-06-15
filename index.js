@@ -792,12 +792,13 @@ class PDFDocumentWithTables extends PDFDocument {
                   );
                 }
                 if (text > 0) {
-                  replacedArray.push(`.text(${splitByRegexArray[text]})`);
+                  replacedArray.push(`.text("${splitByRegexArray[text]}")`);
                 }
               }
-              replacedArray[0];
-              eval(replacedArray[1]);
+              //replacedArray[0];
               eval(replacedArray[0]);
+              eval(replacedArray[1]);
+              
             } else {
               // regex word between two starts.
               // else below
