@@ -391,8 +391,8 @@ class PDFDocumentWithTables extends PDFDocument {
             //  - (cellp.left + cellp.right + (columnSpacing * 2))
             // console.log(cellp);
 
-            // calc height size of string
-            const cellHeight = this.fontSize(size).heightOfString(text, {
+            // calc height size of string ANCHORFRED
+            const cellHeight = this.heightOfString(text, {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
