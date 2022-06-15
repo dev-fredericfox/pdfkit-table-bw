@@ -779,30 +779,27 @@ class PDFDocumentWithTables extends PDFDocument {
               splitByRegexArray.forEach((item, index) => {
                 if (index === 0) {
                   console.log("first part");
-                  replacedArray.push(
-                    this.text(
-                      item,
-                      lastPositionX + cellPadding.left,
-                      startY + topTextToAlignVertically,
-                      {
-                        width: width - (cellPadding.left + cellPadding.right),
-                        align: align,
-                        continued: true,
-                      }
-                    )
+                  this.text(
+                    item,
+                    lastPositionX + cellPadding.left,
+                    startY + topTextToAlignVertically,
+                    {
+                      width: width - (cellPadding.left + cellPadding.right),
+                      align: align,
+                      continued: true,
+                    }
                   );
                   // console.log("Replaced Array 0", replacedArray[0]);
                 } else if (index === 1) {
-                  replacedArray.push(this.font("Helvetica-Bold").text(item, {continued: true}));
+                  this.font("Helvetica-Bold").text(item, { continued: true });
                 } else {
-                  replacedArray.push(this.font("Helvetica").text(item, {continued: true}));
+                  this.font("Helvetica").text(item, { continued: true });
                 }
               });
               // console.log("Replaced Array All", replacedArray);
-              //replacedArray[0];
-              eval(replacedArray[0]);
-              eval(replacedArray[1]);
-              eval(replacedArray[2]);
+              // eval(replacedArray[0]);
+              // eval(replacedArray[1]);
+              // eval(replacedArray[2]);
             } else {
               // regex word between two starts.
               // else below
