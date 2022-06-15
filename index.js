@@ -773,19 +773,39 @@ class PDFDocumentWithTables extends PDFDocument {
             //Bold regexpattern
             const boldRegexPattern = /\*\*(.*?)\*\*/gm;
             if (boldRegexPattern.test(String(text))) {
-              console.log("Regex Found");
-            }
-            // regex word between two starts.
-            // else below
-            this.text(
-              text,
-              lastPositionX + cellPadding.left,
-              startY + topTextToAlignVertically,
-              {
-                width: width - (cellPadding.left + cellPadding.right),
-                align: align,
+              const splitByRegegArray = String(text).split(boldRegexPattern);
+              console.log("Regex Found:", splitByRegegArray);
+              for (text in splitByRegegArray) {
+                if (text === 0) {
+                  splitByRegegArray[text] = this.text(
+                    text,
+                    lastPositionX + cellPadding.left,
+                    startY + topTextToAlignVertically,
+                    {
+                      width: width - (cellPadding.left + cellPadding.right),
+                      align: align,
+                      continued: true,
+                    }
+                  );
+                }
+                if (text > 0) {
+                  splitByRegegArray[text] = text(splitByRegegArray[text]);
+                }
               }
-            );
+              eval(splitByRegegArray[0])
+            } else {
+              // regex word between two starts.
+              // else below
+              this.text(
+                text,
+                lastPositionX + cellPadding.left,
+                startY + topTextToAlignVertically,
+                {
+                  width: width - (cellPadding.left + cellPadding.right),
+                  align: align,
+                }
+              );
+            }
 
             lastPositionX += width;
 
