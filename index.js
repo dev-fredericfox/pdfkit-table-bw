@@ -405,7 +405,7 @@ class PDFDocumentWithTables extends PDFDocument {
               align: "left",
             });
             const cellHeightModifier = (cellHeight) => {
-              if (cellHeight > 85) {
+              if (cellHeight > 80) {
                 return cellHeight * 1;
               } else {
                 return cellHeight * 1.3;
@@ -794,7 +794,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 const replacedArray = [];
                 console.log("Regex Found:", splitByRegexArray);
                 splitByRegexArray.forEach((item, index) => {
-                  if (index === 0) {
+                  if (index === 0 && splitByRegexArray.length > 1) {
                     console.log("first part");
                     this.text(
                       item,
