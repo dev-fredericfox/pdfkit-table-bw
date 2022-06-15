@@ -774,28 +774,30 @@ class PDFDocumentWithTables extends PDFDocument {
             const boldRegexPattern = /\*\*(.*?)\*\*/gm;
             if (boldRegexPattern.test(String(text))) {
               const splitByRegexArray = String(text).split(boldRegexPattern);
-              const replacedArray = []
+              const replacedArray = [];
               console.log("Regex Found:", splitByRegexArray);
               for (text in splitByRegexArray) {
                 if (text === 0) {
-                  replacedArray.push(this.text(
-                    text,
-                    lastPositionX + cellPadding.left,
-                    startY + topTextToAlignVertically,
-                    {
-                      width: width - (cellPadding.left + cellPadding.right),
-                      align: align,
-                      continued: true,
-                    }
-                  ))
+                  replacedArray.push(
+                    this.text(
+                      text,
+                      lastPositionX + cellPadding.left,
+                      startY + topTextToAlignVertically,
+                      {
+                        width: width - (cellPadding.left + cellPadding.right),
+                        align: align,
+                        continued: true,
+                      }
+                    )
+                  );
                 }
                 if (text > 0) {
-                  replacedArray.push('.text(splitByRegexArray[text])')
+                  replacedArray.push(`.text(${splitByRegexArray[text]})`);
                 }
               }
-              replacedArray[0]
-              eval(replacedArray[1])
-              eval(replacedArray[0])
+              replacedArray[0];
+              eval(replacedArray[1]);
+              eval(replacedArray[0]);
             } else {
               // regex word between two starts.
               // else below
