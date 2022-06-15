@@ -392,7 +392,7 @@ class PDFDocumentWithTables extends PDFDocument {
             //  - (cellp.left + cellp.right + (columnSpacing * 2))
             // console.log(cellp);
 
-            // calc height size of string ANCHORFRED
+            // calc height size of string
             const cellHeight = this.heightOfString(text, {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
@@ -404,8 +404,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 return cellHeight * 1;
               }
             };
-            result = Math.max(result, cellHeightModifier(cellHeight));
-            console.log("result: ", i, cellHeight, result, columnSizes[i] - (cellp.left + cellp.right), String(text).substring(0,6));
+            result = Math.max(result, cellHeight);
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
