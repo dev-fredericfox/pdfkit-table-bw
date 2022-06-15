@@ -507,6 +507,10 @@ const table = {
 ```js
   ~~doc.table(table, options, callback)~~;
 ```
+### 0.1.63.01
+Custom Brickwise Fork
++ Added 2 new table options: fontRegular and fontBold. Supports registered fonts, fonts and font files. Example: {fontRegular: "ARegular", fontBold: "fonts/AesteticoBold/font.woff", prepareHeader...}
++ Added support for markdown style bold in data rows. Use two * before and after each sentence to bold. Caveat for this implementation, do not bold each word, this will not work for now. (So for example \*\*this is\*\*  \*\*bold\*\* will not work in this version.)
 
 ### 0.1.63
 
