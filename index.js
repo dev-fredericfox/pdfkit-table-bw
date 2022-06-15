@@ -403,6 +403,7 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
+            console.log(cellHeight)
             result = Math.max(result, cellHeight * options.cellHeightFactor);
           });
 
