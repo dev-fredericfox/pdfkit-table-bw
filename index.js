@@ -778,8 +778,8 @@ class PDFDocumentWithTables extends PDFDocument {
               const replacedArray = [];
               console.log("Regex Found:", splitByRegexArray);
               for (text in splitByRegexArray) {
+                console.log(text)
                 if (text === 0) {
-                  console.log("second this:",this)
                   replacedArray.push(
                     this.text(
                       text,
