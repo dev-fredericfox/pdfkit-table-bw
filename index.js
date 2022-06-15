@@ -405,7 +405,7 @@ class PDFDocumentWithTables extends PDFDocument {
               align: "left",
             });
             const cellHeightModifier = (cellHeight) => {
-              if (cellHeight > 170) {
+              if (cellHeight > 150) {
                 return cellHeight * 1;
               } else {
                 return cellHeight * 1.3;
