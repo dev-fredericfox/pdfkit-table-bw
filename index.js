@@ -80,6 +80,7 @@ class PDFDocumentWithTables extends PDFDocument {
         // Brickwise custom font option
         options.fontRegular || (options.fontRegular = "Helvetica");
         options.fontBold || (options.fontBold = "Helvetica-Bold");
+        options.cellHeightFactor || (options.cellHeightFactor = 1.2)
         // divider lines
         options.divider || (options.divider = {});
         options.divider.header ||
@@ -397,7 +398,7 @@ class PDFDocumentWithTables extends PDFDocument {
               align: "left",
             });
 
-            result = Math.max(result, cellHeight*1.25);
+            result = Math.max(result, cellHeight*options.cellHeightFactor);
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
