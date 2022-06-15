@@ -771,15 +771,14 @@ class PDFDocumentWithTables extends PDFDocument {
 
             // if text === array this.text with {continued: true}
             //Bold regexpattern
-            console.log("first this:",this)
             const boldRegexPattern = /\*\*(.*?)\*\*/gm;
             if (boldRegexPattern.test(String(text))) {
               const splitByRegexArray = String(text).split(boldRegexPattern);
               const replacedArray = [];
               console.log("Regex Found:", splitByRegexArray);
-              for (text in splitByRegexArray) {
+              for (id in splitByRegexArray) {
                 console.log(text)
-                if (text === 0) {
+                if (id === 0) {
                   console.log("first part")
                   replacedArray.push(
                     this.text(
@@ -795,8 +794,8 @@ class PDFDocumentWithTables extends PDFDocument {
                   );
                   console.log(replacedArray[0])
                 }
-                if (text > 0) {
-                  replacedArray.push(`.text("${splitByRegexArray[text]}")`);
+                if (id > 0) {
+                  replacedArray.push(`.text("${splitByRegexArray[id]}")`);
                 }
               }
               console.log(replacedArray)
