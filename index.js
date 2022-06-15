@@ -77,7 +77,9 @@ class PDFDocumentWithTables extends PDFDocument {
         options.absolutePosition || (options.absolutePosition = false);
         options.minRowHeight || (options.minRowHeight = 0);
         // TODO options.hyperlink || (options.hyperlink = { urlToLink: false, description: null });
-
+        // Brickwise custom font option
+        options.fontRegular || (options.fontRegular = "Helvetica");
+        options.fontBold || (options.fontBold = "Helvetica-Bold");
         // divider lines
         options.divider || (options.divider = {});
         options.divider.header ||
@@ -119,11 +121,11 @@ class PDFDocumentWithTables extends PDFDocument {
 
         const prepareHeader =
           options.prepareHeader ||
-          (() => this.fillColor("black").font("Helvetica-Bold").fontSize(8).fill());
+          (() => this.fillColor("black").font(options.fontBold).fontSize(8).fill());
         const prepareRow =
           options.prepareRow ||
           ((row, indexColumn, indexRow, rectRow, rectCell) =>
-            this.fillColor("black").font("Helvetica").fontSize(8).fill());
+            this.fillColor("black").font(options.fontRegular).fontSize(8).fill());
         //const prepareCell      = options.prepareCell || ((cell, indexColumn, indexRow, indexCell, rectCell) => this.fillColor('black').font("Helvetica").fontSize(8).fill());
 
         let tableWidth = 0;
@@ -733,11 +735,11 @@ class PDFDocumentWithTables extends PDFDocument {
 
             // bold
             if (String(text).indexOf("bold:") !== -1) {
-              this.font("Helvetica-Bold");
+              this.font(options.fontBold);
               text = text.replace("bold:", "");
             }
             if (String(text).indexOf("regular:") !== -1) {
-              this.font("Helvetica");
+              this.font(options.fontRegular);
               text = text.replace("regular:", "");
             }
 
@@ -793,16 +795,16 @@ class PDFDocumentWithTables extends PDFDocument {
                 } else if (index % 2 === 1) {
                   if (index + 1 === splitByRegexArray.length) {
                     console.log("last part");
-                    this.font("Helvetica-Bold").text(item, { continued: false });
+                    this.font(options.fontBold).text(item, { continued: false });
                   } else {
-                    this.font("Helvetica-Bold").text(item, { continued: true });
+                    this.font(options.fontBold).text(item, { continued: true });
                   }
                 } else {
                   if (index + 1 === splitByRegexArray.length) {
                     console.log("last part");
-                    this.font("Helvetica").text(item, { continued: false });
+                    this.font(options.fontRegular).text(item, { continued: false });
                   } else {
-                    this.font("Helvetica").text(item, { continued: true });
+                    this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
               });
