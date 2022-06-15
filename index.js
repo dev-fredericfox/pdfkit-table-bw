@@ -786,53 +786,107 @@ class PDFDocumentWithTables extends PDFDocument {
             // ------------------------------------------------------------------------------
 
             // Custom Brickwise implementation for bolding words in a cell
-            const boldRegexPattern = /\*\*(.*?)\*\*/gm;
-            if (boldRegexPattern.test(String(text))) {
-              const splitByRegexArray = String(text).split(boldRegexPattern);
-              const replacedArray = [];
-              console.log("Regex Found:", splitByRegexArray);
-              splitByRegexArray.forEach((item, index) => {
-                if (index === 0) {
-                  console.log("first part");
-                  this.text(
-                    item,
-                    lastPositionX + cellPadding.left,
-                    startY + topTextToAlignVertically,
-                    {
-                      width: width - (cellPadding.left + cellPadding.right),
-                      align: align,
-                      continued: true,
+            const splitByNewLines = String(text).split("\n");
+            splitByNewLines.forEach((line, lineIndex) => {
+              const boldRegexPattern = /\*\*(.*?)\*\*/gm;
+              if (boldRegexPattern.test(String(text))) {
+                const splitByRegexArray = String(text).split(boldRegexPattern);
+                const replacedArray = [];
+                console.log("Regex Found:", splitByRegexArray);
+                splitByRegexArray.forEach((item, index) => {
+                  if (index === 0) {
+                    console.log("first part");
+                    this.text(
+                      item,
+                      lastPositionX + cellPadding.left,
+                      startY + topTextToAlignVertically,
+                      {
+                        width: width - (cellPadding.left + cellPadding.right),
+                        align: align,
+                        continued: true,
+                      }
+                    );
+                    // console.log("Replaced Array 0", replacedArray[0]);
+                  } else if (index % 2 === 1) {
+                    if (index + 1 === splitByRegexArray.length) {
+                      console.log("last part");
+                      this.font(options.fontBold).text(item, { continued: false });
+                    } else {
+                      this.font(options.fontBold).text(item, { continued: true });
                     }
-                  );
-                  // console.log("Replaced Array 0", replacedArray[0]);
-                } else if (index % 2 === 1) {
-                  if (index + 1 === splitByRegexArray.length) {
-                    console.log("last part");
-                    this.font(options.fontBold).text(item, { continued: false });
                   } else {
-                    this.font(options.fontBold).text(item, { continued: true });
+                    if (index + 1 === splitByRegexArray.length) {
+                      console.log("last part");
+                      this.font(options.fontRegular).text(item, { continued: false });
+                    } else {
+                      this.font(options.fontRegular).text(item, { continued: true });
+                    }
                   }
-                } else {
-                  if (index + 1 === splitByRegexArray.length) {
-                    console.log("last part");
-                    this.font(options.fontRegular).text(item, { continued: false });
-                  } else {
-                    this.font(options.fontRegular).text(item, { continued: true });
+                });
+              } else {
+                // If no regex detected, just proceed with the pre-forked code.
+                this.text(
+                  text,
+                  lastPositionX + cellPadding.left,
+                  startY + topTextToAlignVertically,
+                  {
+                    width: width - (cellPadding.left + cellPadding.right),
+                    align: align,
                   }
-                }
-              });
-            } else {
-              // If no regex detected, just proceed with the pre-forked code.
-              this.text(
-                text,
-                lastPositionX + cellPadding.left,
-                startY + topTextToAlignVertically,
-                {
-                  width: width - (cellPadding.left + cellPadding.right),
-                  align: align,
-                }
-              );
-            }
+                );
+              }
+              if (lineIndex !== splitByNewLines.length - 1) {
+                this.moveDown();
+              }
+            });
+            // With new line support
+            // const boldRegexPattern = /\*\*(.*?)\*\*/gm;
+            // if (boldRegexPattern.test(String(text))) {
+            //   const splitByRegexArray = String(text).split(boldRegexPattern);
+            //   const replacedArray = [];
+            //   console.log("Regex Found:", splitByRegexArray);
+            //   splitByRegexArray.forEach((item, index) => {
+            //     if (index === 0) {
+            //       console.log("first part");
+            //       this.text(
+            //         item,
+            //         lastPositionX + cellPadding.left,
+            //         startY + topTextToAlignVertically,
+            //         {
+            //           width: width - (cellPadding.left + cellPadding.right),
+            //           align: align,
+            //           continued: true,
+            //         }
+            //       );
+            //       // console.log("Replaced Array 0", replacedArray[0]);
+            //     } else if (index % 2 === 1) {
+            //       if (index + 1 === splitByRegexArray.length) {
+            //         console.log("last part");
+            //         this.font(options.fontBold).text(item, { continued: false });
+            //       } else {
+            //         this.font(options.fontBold).text(item, { continued: true });
+            //       }
+            //     } else {
+            //       if (index + 1 === splitByRegexArray.length) {
+            //         console.log("last part");
+            //         this.font(options.fontRegular).text(item, { continued: false });
+            //       } else {
+            //         this.font(options.fontRegular).text(item, { continued: true });
+            //       }
+            //     }
+            //   });
+            // } else {
+            //   // If no regex detected, just proceed with the pre-forked code.
+            //   this.text(
+            //     text,
+            //     lastPositionX + cellPadding.left,
+            //     startY + topTextToAlignVertically,
+            //     {
+            //       width: width - (cellPadding.left + cellPadding.right),
+            //       align: align,
+            //     }
+            //   );
+            // }
 
             lastPositionX += width;
 
