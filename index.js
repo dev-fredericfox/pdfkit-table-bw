@@ -795,6 +795,7 @@ class PDFDocumentWithTables extends PDFDocument {
                   replacedArray.push(`.text("${splitByRegexArray[text]}")`);
                 }
               }
+              console.log(replacedArray)
               //replacedArray[0];
               eval(replacedArray[0]);
               // eval(replacedArray[1]);
