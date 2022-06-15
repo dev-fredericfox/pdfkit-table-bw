@@ -401,7 +401,7 @@ class PDFDocumentWithTables extends PDFDocument {
               if (cellHeight > 80) {
                 return cellHeight * 1;
               } else {
-                return cellHeight * 1.3;
+                return cellHeight * 1;
               }
             };
             result = Math.max(result, cellHeightModifier(cellHeight));
