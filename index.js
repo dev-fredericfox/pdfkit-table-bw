@@ -381,8 +381,7 @@ class PDFDocumentWithTables extends PDFDocument {
               text = String(cell.label);
               // apply font size on calc about height row
               cell.hasOwnProperty("options") && prepareRowOptions(cell);
-              cell.hasOwnProperty("options") &&
-                console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor);
+              cell.hasOwnProperty("options") && console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor);
               cell.hasOwnProperty("options") && console.log("options: ", cell?.options);
               cell.hasOwnProperty("options") && console.log("cell start");
               cell.hasOwnProperty("options") && console.log("cell: ", cell);
