@@ -122,11 +122,11 @@ class PDFDocumentWithTables extends PDFDocument {
 
         const prepareHeader =
           options.prepareHeader ||
-          (() => this.fillColor("black").font(options.fontBold).fontSize(8).fill());
+          (() => this.fillColor("black").font(options.fontBold).fontSize(10).fill());
         const prepareRow =
           options.prepareRow ||
           ((row, indexColumn, indexRow, rectRow, rectCell) =>
-            this.fillColor("black").font(options.fontRegular).fontSize(8).fill());
+            this.fillColor("black").font(options.fontRegular).fontSize(10).fill());
         //const prepareCell      = options.prepareCell || ((cell, indexColumn, indexRow, indexCell, rectCell) => this.fillColor('black').font("Helvetica").fontSize(8).fill());
 
         let tableWidth = 0;
@@ -163,7 +163,7 @@ class PDFDocumentWithTables extends PDFDocument {
           // if string
           if (typeof data === "string") {
             // font size
-            this.fillColor("black").fontSize(8).fontSize(size).opacity(opacity).fill();
+            this.fillColor("black").fontSize(10).fontSize(size).opacity(opacity).fill();
             // this.fillColor('black').font("Helvetica").fontSize(8).fontSize(size).opacity(opacity).fill();
 
             // const titleHeight = this.heightOfString(data, {
