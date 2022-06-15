@@ -380,14 +380,7 @@ class PDFDocumentWithTables extends PDFDocument {
               // define label
               text = String(cell.label);
               // apply font size on calc about height row
-              console.log("Log Start");
               cell.hasOwnProperty("options") && prepareRowOptions(cell);
-              cell.hasOwnProperty("options") &&
-                console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor);
-              cell.hasOwnProperty("options") && console.log("options: ", cell?.options);
-              cell.hasOwnProperty("options") && console.log("cell start");
-              cell.hasOwnProperty("options") && console.log("cell: ", cell);
-              console.log("Log End");
             }
 
             text = String(text).replace("bold:", "").replace("size", "");
@@ -412,7 +405,7 @@ class PDFDocumentWithTables extends PDFDocument {
               }
             };
             result = Math.max(result, cellHeightModifier(cellHeight));
-            console.log("result: ",i, cellHeight, result)
+            console.log("result: ", i, cellHeight, result, String(text).substring(0,6));
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
@@ -811,9 +804,13 @@ class PDFDocumentWithTables extends PDFDocument {
                   } else if (index % 2 === 1) {
                     if (index + 1 === splitByRegexArray.length) {
                       console.log("last part");
-                      this.font(options.fontBold).text(item, { continued: false }).font(options.fontRegular);
+                      this.font(options.fontBold)
+                        .text(item, { continued: false })
+                        .font(options.fontRegular);
                     } else {
-                      this.font(options.fontBold).text(item, { continued: true }).font(options.fontRegular);
+                      this.font(options.fontBold)
+                        .text(item, { continued: true })
+                        .font(options.fontRegular);
                     }
                   } else {
                     if (index + 1 === splitByRegexArray.length) {
