@@ -792,12 +792,14 @@ class PDFDocumentWithTables extends PDFDocument {
                   // console.log("Replaced Array 0", replacedArray[0]);
                 } else if (index % 2 === 1) {
                   if (index + 1 === splitByRegexArray.length) {
+                    console.log("last part");
                     this.font("Helvetica-Bold").text(item, { continued: false });
                   } else {
                     this.font("Helvetica-Bold").text(item, { continued: true });
                   }
                 } else {
                   if (index + 1 === splitByRegexArray.length) {
+                    console.log("last part");
                     this.font("Helvetica").text(item, { continued: false });
                   } else {
                     this.font("Helvetica").text(item, { continued: true });
