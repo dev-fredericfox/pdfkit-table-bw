@@ -381,6 +381,9 @@ class PDFDocumentWithTables extends PDFDocument {
               text = String(cell.label);
               // apply font size on calc about height row
               cell.hasOwnProperty("options") && prepareRowOptions(cell);
+              cell.hasOwnProperty("options") && console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor)
+              cell.hasOwnProperty("options") && console.log("options: ",cell?.options)
+              cell.hasOwnProperty("options") && console.log("cell: ",cell)
             }
 
             text = String(text).replace("bold:", "").replace("size", "");
@@ -397,8 +400,6 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            console.log("cellHeightFactor: ", cell?.options?.cellHeightFactor)
-            console.log("options: ",cell?.options)
             result = Math.max(result, cellHeight*options.cellHeightFactor);
           });
 
