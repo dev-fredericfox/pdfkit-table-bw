@@ -771,8 +771,7 @@ class PDFDocumentWithTables extends PDFDocument {
             }
             // ------------------------------------------------------------------------------
 
-            // if text === array this.text with {continued: true}
-            //Bold regexpattern
+            // Custom Brickwise implementation for bolding words in a cell
             const boldRegexPattern = /\*\*(.*?)\*\*/gm;
             if (boldRegexPattern.test(String(text))) {
               const splitByRegexArray = String(text).split(boldRegexPattern);
@@ -808,13 +807,8 @@ class PDFDocumentWithTables extends PDFDocument {
                   }
                 }
               });
-              // console.log("Replaced Array All", replacedArray);
-              // eval(replacedArray[0]);
-              // eval(replacedArray[1]);
-              // eval(replacedArray[2]);
             } else {
-              // regex word between two starts.
-              // else below
+              // If no regex detected, just proceed with the pre-forked code.
               this.text(
                 text,
                 lastPositionX + cellPadding.left,
