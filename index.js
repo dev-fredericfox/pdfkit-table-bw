@@ -398,7 +398,7 @@ class PDFDocumentWithTables extends PDFDocument {
               align: "left",
             });
             const newLineRegexp = /\n/g
-            const amountOfNewLinesFound = [text.matchAll(newLineRegexp)].length;
+            const amountOfNewLinesFound = [...text.matchAll(newLineRegexp)].length;
             console.log("amountOfNewLinesFound:",amountOfNewLinesFound);
             console.log("CellHeight:",cellHeight);
             const cellHeightModifier = (cellHeight) => {
