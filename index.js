@@ -824,21 +824,26 @@ class PDFDocumentWithTables extends PDFDocument {
                   }
                 }
                 if (index === 0 && splitByRegexArray.length === 1) {
-                  this.text(
-                    item,
-                    lastPositionX + cellPadding.left,
-                    startY + topTextToAlignVertically,
-                    {
-                      width: width - (cellPadding.left + cellPadding.right),
-                      align: align,
-                      continued: false,
-                    }
-                  );
+                  this.font(options.fontRegular)
+                    .text(item, { continued: false })
+                    .font(options.fontRegular);
                 }
               });
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex);
                 this.moveDown().font(options.fontRegular);
+              }
+              if (splitByNewLines.length === 1) {
+                this.text(
+                  item,
+                  lastPositionX + cellPadding.left,
+                  startY + topTextToAlignVertically,
+                  {
+                    width: width - (cellPadding.left + cellPadding.right),
+                    align: align,
+                    continued: false,
+                  }
+                );
               }
               console.log("End of new line");
             });
