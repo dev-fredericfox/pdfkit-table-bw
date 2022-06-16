@@ -844,6 +844,10 @@ class PDFDocumentWithTables extends PDFDocument {
                       continued: false,
                     }
                   );
+                } else if (index === 0 && splitByRegexArray.length === 1 && lineIndex > 0) {
+                  this.font(options.fontRegular)
+                    .text(item, { continued: false })
+                    .font(options.fontRegular);
                 }
                 // if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
                 //   this.text(
