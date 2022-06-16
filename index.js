@@ -398,8 +398,8 @@ class PDFDocumentWithTables extends PDFDocument {
             });
             const newLineRegexp = /\n/g;
             const amountOfNewLinesFound = [...text.matchAll(newLineRegexp)].length;
-            console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
-            console.log("CellHeight:", cellHeight);
+            // console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
+            // console.log("CellHeight:", cellHeight);
             const cellHeightModifier = (cellHeight) => {
               return amountOfNewLinesFound * 13 + cellHeight;
             };
@@ -787,13 +787,9 @@ class PDFDocumentWithTables extends PDFDocument {
               const splitByRegexArray = line.split(boldRegexPattern);
               console.log("Regex Found:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
-                if (index === 0) {
-                  console.log(
-                    "Index 0:",
-                    item,
-                    lastPositionX,
-                    startY + topTextToAlignVertically
-                  );
+                console.log("For Each Loop Start: ",item)
+                if (index === 0 && splitByRegexArray.length > 1) {
+                  console.log("Index 0:", item);
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
@@ -806,44 +802,24 @@ class PDFDocumentWithTables extends PDFDocument {
                   );
                 } else if (index % 2 === 1) {
                   if (index + 1 === splitByRegexArray.length) {
-                    console.log(
-                      "Bold and last segment:",
-                      item,
-                      lastPositionX,
-                      startY + topTextToAlignVertically
-                    );
+                    console.log("Bold and last segment:", item);
                     this.font(options.fontBold)
                       .text(item, { continued: false })
                       .font(options.fontRegular);
                   } else {
-                    console.log(
-                      "Bold:",
-                      item,
-                      lastPositionX,
-                      startY + topTextToAlignVertically
-                    );
+                    console.log("Bold:", item);
                     this.font(options.fontBold)
                       .text(item, { continued: true })
                       .font(options.fontRegular);
                   }
                 } else {
                   if (index === splitByRegexArray.length - 1) {
-                    console.log(
-                      "Regular and last segment:",
-                      item,
-                      lastPositionX,
-                      startY + topTextToAlignVertically
-                    );
+                    console.log("Regular and last segment:", item);
                     this.font(options.fontRegular)
                       .text(item, { continued: false })
                       .font(options.fontRegular);
                   } else {
-                    console.log(
-                      "Regular:",
-                      item,
-                      lastPositionX,
-                      startY + topTextToAlignVertically
-                    );
+                    console.log("Regular:", item);
                     this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
