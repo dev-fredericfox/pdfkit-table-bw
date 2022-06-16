@@ -397,10 +397,10 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            const newLineRegexp = /\n/g
+            const newLineRegexp = /\n/g;
             const amountOfNewLinesFound = [...text.matchAll(newLineRegexp)].length;
-            console.log("amountOfNewLinesFound:",amountOfNewLinesFound);
-            console.log("CellHeight:",cellHeight);
+            console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
+            console.log("CellHeight:", cellHeight);
             const cellHeightModifier = (cellHeight) => {
               if (cellHeight > 80) {
                 return cellHeight * 1;
@@ -792,7 +792,7 @@ class PDFDocumentWithTables extends PDFDocument {
               const splitByRegexArray = line.split(boldRegexPattern);
               console.log("Regex Found:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
-                if (index === 0 && splitByRegexArray.length > 1) {
+                if (index === 0) {
                   console.log(
                     "Index 0:",
                     item,
