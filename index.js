@@ -828,17 +828,17 @@ class PDFDocumentWithTables extends PDFDocument {
                     .text(item, { continued: false })
                     .font(options.fontRegular);
                 }
-                if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
-                  this.text(
-                    item,
-                    lastPositionX + cellPadding.left,
-                    startY + topTextToAlignVertically,
-                    {
-                      width: width - (cellPadding.left + cellPadding.right),
-                      align: align,
-                    }
-                  );
-                }
+                // if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
+                //   this.text(
+                //     item,
+                //     lastPositionX + cellPadding.left,
+                //     startY + topTextToAlignVertically,
+                //     {
+                //       width: width - (cellPadding.left + cellPadding.right),
+                //       align: align,
+                //     }
+                //   );
+                // }
               });
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex);
