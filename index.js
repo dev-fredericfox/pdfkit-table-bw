@@ -779,69 +779,84 @@ class PDFDocumentWithTables extends PDFDocument {
             // ------------------------------------------------------------------------------
 
             // Custom Brickwise implementation for bolding words in a cell
-            console.log("String(text) before splitting by new line", String(text))
+            console.log("String(text) before splitting by new line", String(text));
             const splitByNewLines = String(text).split("\n");
-            console.log(splitByNewLines)
+            console.log(splitByNewLines);
             splitByNewLines.forEach((line, lineIndex) => {
-              console.log("****New Line:",line, lineIndex, splitByNewLines.length-1)
+              console.log("****New Line:", line, lineIndex, splitByNewLines.length - 1);
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
-              if (boldRegexPattern.test(line)) {
-                const splitByRegexArray = line.split(boldRegexPattern);
-                console.log("Regex Found:", splitByRegexArray);
-                splitByRegexArray.forEach((item, index) => {
-                  if (index === 0 && splitByRegexArray.length > 1) {
-                    console.log("Index 0:", item, lastPositionX, startY + topTextToAlignVertically);
-                    this.text(
+              const splitByRegexArray = line.split(boldRegexPattern);
+              console.log("Regex Found:", splitByRegexArray);
+              splitByRegexArray.forEach((item, index) => {
+                if (index === 0 && splitByRegexArray.length > 1) {
+                  console.log(
+                    "Index 0:",
+                    item,
+                    lastPositionX,
+                    startY + topTextToAlignVertically
+                  );
+                  this.text(
+                    item,
+                    lastPositionX + cellPadding.left,
+                    startY + topTextToAlignVertically,
+                    {
+                      width: width - (cellPadding.left + cellPadding.right),
+                      align: align,
+                      continued: true,
+                    }
+                  );
+                } else if (index % 2 === 1) {
+                  if (index + 1 === splitByRegexArray.length) {
+                    console.log(
+                      "Bold and last segment:",
                       item,
-                      lastPositionX + cellPadding.left,
-                      startY + topTextToAlignVertically,
-                      {
-                        width: width - (cellPadding.left + cellPadding.right),
-                        align: align,
-                        continued: true,
-                      }
+                      lastPositionX,
+                      startY + topTextToAlignVertically
                     );
-                  } else if (index % 2 === 1) {
-                    if (index + 1 === splitByRegexArray.length) {
-                      console.log("Bold and last segment:", item, lastPositionX, startY + topTextToAlignVertically);
-                      this.font(options.fontBold)
-                        .text(item, { continued: false }).moveDown().font(options.fontRegular)
-                        .font(options.fontRegular);
-                    } else {
-                      console.log("Bold:", item, lastPositionX,startY + topTextToAlignVertically);
-                      this.font(options.fontBold)
-                        .text(item, { continued: true })
-                        .font(options.fontRegular);
-                    }
+                    this.font(options.fontBold)
+                      .text(item, { continued: false })
+                      .moveDown()
+                      .font(options.fontRegular)
+                      .font(options.fontRegular);
                   } else {
-                    if (index + 1 === splitByRegexArray.length) {
-                      console.log("Regular and last segment:", item, lastPositionX, startY + topTextToAlignVertically);
-                      this.font(options.fontRegular).text(item, { continued: false }).moveDown().font(options.fontRegular);
-                    } else {
-                      console.log("Regular:", item, lastPositionX, startY + topTextToAlignVertically);
-                      this.font(options.fontRegular).text(item, { continued: true });
-                    }
+                    console.log(
+                      "Bold:",
+                      item,
+                      lastPositionX,
+                      startY + topTextToAlignVertically
+                    );
+                    this.font(options.fontBold)
+                      .text(item, { continued: true })
+                      .font(options.fontRegular);
                   }
-                });
-              } else {
-                // If no regex detected, just proceed with the pre-forked code.
-                console.log("No regex found", lineIndex, lastPositionX, startY + topTextToAlignVertically);
-                this.text(
-                  text,
-                  lastPositionX + cellPadding.left,
-                  startY + topTextToAlignVertically,
-                  {
-                    width: width - (cellPadding.left + cellPadding.right),
-                    align: align,
-                    continued: false,
+                } else {
+                  if (index + 1 === splitByRegexArray.length) {
+                    console.log(
+                      "Regular and last segment:",
+                      item,
+                      lastPositionX,
+                      startY + topTextToAlignVertically
+                    );
+                    this.font(options.fontRegular)
+                      .text(item, { continued: false })
+                      .moveDown()
+                      .font(options.fontRegular);
+                  } else {
+                    console.log(
+                      "Regular:",
+                      item,
+                      lastPositionX,
+                      startY + topTextToAlignVertically
+                    );
+                    this.font(options.fontRegular).text(item, { continued: true });
                   }
-                ).moveDown().font(options.fontRegular);
-              }
+                }
+              });
               if (lineIndex !== splitByNewLines.length - 1) {
-                console.log("moving down", lineIndex)
+                console.log("moving down", lineIndex);
                 this.moveDown().font(options.fontRegular);
               }
-              console.log("End of new line")
+              console.log("End of new line");
             });
             // With new line support
             // const boldRegexPattern = /\*\*(.*?)\*\*/gm;
