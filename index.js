@@ -408,7 +408,7 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            console.log(cellHeight);
+            console.log(cellHeight, text.substring(0, 20));
             const newLineRegexp = /\n/g;
             const amountOfNewLinesFound = [...text.matchAll(newLineRegexp)].length;
             // console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
