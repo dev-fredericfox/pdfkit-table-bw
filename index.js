@@ -492,7 +492,7 @@ class PDFDocumentWithTables extends PDFDocument {
           // calc first table line when init table
           if (firstLineHeight === 0) {
             if (table.datas.length > 0) {
-              firstLineHeight = computeRowHeight(table.datas[0], true);
+              firstLineHeight = computeRowHeight(table.datas[0], true)*0.9;
               this.logg(firstLineHeight, "datas");
             }
             if (table.rows.length > 0) {
