@@ -80,7 +80,6 @@ class PDFDocumentWithTables extends PDFDocument {
         // Brickwise custom font option
         options.fontRegular || (options.fontRegular = "Helvetica");
         options.fontBold || (options.fontBold = "Helvetica-Bold");
-        options.cellHeightFactor || (options.cellHeightFactor = 1.2);
         // divider lines
         options.divider || (options.divider = {});
         options.divider.header ||
@@ -402,13 +401,9 @@ class PDFDocumentWithTables extends PDFDocument {
             console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
             console.log("CellHeight:", cellHeight);
             const cellHeightModifier = (cellHeight) => {
-              if (cellHeight > 80) {
-                return cellHeight * 1;
-              } else {
-                return cellHeight * 1;
-              }
+              amountOfNewLinesFound * 13 + cellHeight;
             };
-            result = Math.max(result, cellHeight);
+            result = Math.max(result, cellHeightModifier(cellHeight));
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
