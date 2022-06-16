@@ -402,7 +402,7 @@ class PDFDocumentWithTables extends PDFDocument {
             // console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
             // console.log("CellHeight:", cellHeight);
             const cellHeightModifier = (cellHeight) => {
-              return amountOfNewLinesFound * 1 + cellHeight;
+              return amountOfNewLinesFound * 0 + cellHeight;
             };
             result = Math.max(result, cellHeightModifier(cellHeight));
           });
