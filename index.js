@@ -779,6 +779,7 @@ class PDFDocumentWithTables extends PDFDocument {
             // ------------------------------------------------------------------------------
 
             // Custom Brickwise implementation for bolding words in a cell
+            console.log(String(text))
             const splitByNewLines = String(text).split("\n");
             console.log(splitByNewLines)
             splitByNewLines.forEach((line, lineIndex) => {
