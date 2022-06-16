@@ -787,7 +787,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 console.log("Regex Found:", splitByRegexArray);
                 splitByRegexArray.forEach((item, index) => {
                   if (index === 0 && splitByRegexArray.length > 1) {
-                    console.log("Index 0:", item.substring(0,10), lastPositionX, startY + topTextToAlignVertically);
+                    console.log("Index 0:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
                     this.text(
                       item,
                       lastPositionX + cellPadding.left,
@@ -800,22 +800,22 @@ class PDFDocumentWithTables extends PDFDocument {
                     );
                   } else if (index % 2 === 1) {
                     if (index + 1 === splitByRegexArray.length) {
-                      console.log("Bold and last segment:", item.substring(0,10), lastPositionX, startY + topTextToAlignVertically);
+                      console.log("Bold and last segment:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
                       this.font(options.fontBold)
                         .text(item, { continued: false })
                         .font(options.fontRegular);
                     } else {
-                      console.log("Bold:", item.substring(0,10), lastPositionX,startY + topTextToAlignVertically);
+                      console.log("Bold:", item.substring(0,25), lastPositionX,startY + topTextToAlignVertically);
                       this.font(options.fontBold)
                         .text(item, { continued: true })
                         .font(options.fontRegular);
                     }
                   } else {
                     if (index + 1 === splitByRegexArray.length) {
-                      console.log("Regular and last segment:", item.substring(0,10), lastPositionX, startY + topTextToAlignVertically);
+                      console.log("Regular and last segment:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
                       this.font(options.fontRegular).text(item, { continued: false });
                     } else {
-                      console.log("Regular:", item.substring(0,10), lastPositionX, startY + topTextToAlignVertically);
+                      console.log("Regular:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
                       this.font(options.fontRegular).text(item, { continued: true });
                     }
                   }
