@@ -792,8 +792,8 @@ class PDFDocumentWithTables extends PDFDocument {
                 splitByRegexArray.length
               );
               splitByRegexArray.forEach((item, index) => {
-                console.log("For Each Loop Start: ", item);
-                if (index === 0 && splitByRegexArray.length > 1) {
+                console.log("For Each Loop Start: ", item, index, lineIndex);
+                if (index === 0 && splitByRegexArray.length > 1 && lineIndex === 0) {
                   console.log("Index 0:", item);
                   this.text(
                     item,
