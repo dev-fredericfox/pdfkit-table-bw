@@ -828,7 +828,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     .text(item, { continued: false })
                     .font(options.fontRegular);
                 }
-                if (splitByNewLines.length === 1 && splitByRegexArray === 0) {
+                if (splitByNewLines.length <= 1 && splitByRegexArray === 0) {
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
