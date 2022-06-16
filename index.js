@@ -788,7 +788,7 @@ class PDFDocumentWithTables extends PDFDocument {
               console.log("splitByRegexArray Array:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
                 console.log("For Each Loop Start: ",item)
-                if (index === 0 && splitByRegexArray.length > 0) {
+                if (index === 0 && splitByRegexArray.length > 1) {
                   console.log("Index 0:", item);
                   this.text(
                     item,
@@ -823,6 +823,18 @@ class PDFDocumentWithTables extends PDFDocument {
                     this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
+                if (index === 0 && splitByRegexArray.length === 1) {
+                  console.log("NO BOLD HERE:", item);
+                  this.text(
+                    item,
+                    lastPositionX + cellPadding.left,
+                    startY + topTextToAlignVertically,
+                    {
+                      width: width - (cellPadding.left + cellPadding.right),
+                      align: align,
+                      continued: false,
+                    }
+                  );
               });
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex);
