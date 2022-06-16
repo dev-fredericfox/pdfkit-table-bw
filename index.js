@@ -832,7 +832,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     {
                       width: width - (cellPadding.left + cellPadding.right),
                       align: align,
-                      continued: false,
+                      continued: true,
                     }
                   );
                 }
