@@ -416,13 +416,13 @@ class PDFDocumentWithTables extends PDFDocument {
             const cellHeightModifier = (cellHeight) => {
               if (isHeader) {
                 console.log(cellHeight * 0.92);
-                return cellHeight * 0.92;
+                return cellHeight * 0.82;
               } else {
                 return amountOfNewLinesFound * 0 + cellHeight;
               }
             };
             result = Math.max(result, cellHeightModifier(cellHeight));
-            console.log("result:", result)
+            console.log("result:", result);
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
