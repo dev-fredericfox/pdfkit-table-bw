@@ -422,7 +422,7 @@ class PDFDocumentWithTables extends PDFDocument {
               }
             };
             result = Math.max(result, cellHeightModifier(cellHeight));
-            console.log(result)
+            console.log("result:", result)
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
