@@ -416,7 +416,7 @@ class PDFDocumentWithTables extends PDFDocument {
             const cellHeightModifier = (cellHeight) => {
               if (isHeader) {
                 console.log(cellHeight * 0.92);
-                return cellHeight * 0.6;
+                return cellHeight * 1.1;
               } else {
                 return amountOfNewLinesFound * 0 + cellHeight;
               }
