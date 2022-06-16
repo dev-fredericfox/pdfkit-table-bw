@@ -787,7 +787,7 @@ class PDFDocumentWithTables extends PDFDocument {
               const splitByRegexArray = line.split(boldRegexPattern);
               console.log("Regex Found:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
-                if (index === 0 && splitByRegexArray.length > 1) {
+                if (index === 0) {
                   console.log(
                     "Index 0:",
                     item,
