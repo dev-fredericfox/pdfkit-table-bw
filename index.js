@@ -787,7 +787,7 @@ class PDFDocumentWithTables extends PDFDocument {
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
               if (boldRegexPattern.test(line)) {
                 const splitByRegexArray = line.split(boldRegexPattern);
-                // console.log("Regex Found:", splitByRegexArray);
+                console.log("Regex Found:", splitByRegexArray);
                 splitByRegexArray.forEach((item, index) => {
                   if (index === 0 && splitByRegexArray.length > 1) {
                     console.log("Index 0:", item, lastPositionX, startY + topTextToAlignVertically);
