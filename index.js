@@ -825,9 +825,16 @@ class PDFDocumentWithTables extends PDFDocument {
                 }
                 if (index === 0 && splitByRegexArray.length === 1) {
                   console.log("Index === 0 && splitByRegexArray === 1 :", index, splitByRegexArray.length, item);
-                  this.font(options.fontRegular)
-                    .text(item, { continued: true })
-                    .font(options.fontRegular);
+                  this.text(
+                    item,
+                    lastPositionX + cellPadding.left,
+                    startY + topTextToAlignVertically,
+                    {
+                      width: width - (cellPadding.left + cellPadding.right),
+                      align: align,
+                      continued: false,
+                    }
+                  );
                 }
                 // if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
                 //   this.text(
