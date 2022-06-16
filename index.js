@@ -823,8 +823,8 @@ class PDFDocumentWithTables extends PDFDocument {
                     this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
-                if (index === 0 && splitByRegexArray.length === 1) {
-                  console.log("NO BOLD HERE:", item);
+                if (index === 0 && splitByRegexArray.length > 1) {
+                  console.log("Index 0:", item);
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
@@ -832,10 +832,10 @@ class PDFDocumentWithTables extends PDFDocument {
                     {
                       width: width - (cellPadding.left + cellPadding.right),
                       align: align,
-                      continued: false,
+                      continued: true,
                     }
-                  );
-              });
+                  )
+              }
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex);
                 this.moveDown().font(options.fontRegular);
