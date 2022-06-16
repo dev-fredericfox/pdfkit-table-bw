@@ -785,7 +785,11 @@ class PDFDocumentWithTables extends PDFDocument {
               console.log("****New Line:", line, lineIndex, splitByNewLines.length - 1);
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
               const splitByRegexArray = line.split(boldRegexPattern);
-              console.log("splitByRegexArray Array:", splitByRegexArray, splitByRegexArray.length);
+              console.log(
+                "splitByRegexArray Array:",
+                splitByRegexArray,
+                splitByRegexArray.length
+              );
               splitByRegexArray.forEach((item, index) => {
                 console.log("For Each Loop Start: ", item);
                 if (index === 0 && splitByRegexArray.length > 1) {
@@ -823,8 +827,13 @@ class PDFDocumentWithTables extends PDFDocument {
                     this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
-                if (index === 0 && splitByRegexArray.length === 1) {
-                  console.log("Index === 0 && splitByRegexArray === 1 :", index, splitByRegexArray.length, item);
+                if (index === 0 && splitByRegexArray.length === 1 && lineIndex === 0) {
+                  console.log(
+                    "Index === 0 && splitByRegexArray === 1 :",
+                    index,
+                    splitByRegexArray.length,
+                    item
+                  );
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
@@ -832,7 +841,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     {
                       width: width - (cellPadding.left + cellPadding.right),
                       align: align,
-                      continued: true,
+                      continued: false,
                     }
                   );
                 }
