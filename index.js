@@ -492,7 +492,7 @@ class PDFDocumentWithTables extends PDFDocument {
           // calc first table line when init table
           if (firstLineHeight === 0) {
             if (table.datas.length > 0) {
-              firstLineHeight = computeRowHeight(table.datas[0], true)*0.9;
+              firstLineHeight = computeRowHeight(table.datas[0], true);
               this.logg(firstLineHeight, "datas");
             }
             if (table.rows.length > 0) {
@@ -793,7 +793,7 @@ class PDFDocumentWithTables extends PDFDocument {
               const splitByRegexArray = line.split(boldRegexPattern);
               splitByRegexArray.forEach((item, index) => {
                 if (index === 0 && splitByRegexArray.length > 1 && lineIndex === 0) {
-                  this.text(
+                  this.font(options.fontRegular).text(
                     item,
                     lastPositionX + cellPadding.left,
                     startY + topTextToAlignVertically,
@@ -823,7 +823,7 @@ class PDFDocumentWithTables extends PDFDocument {
                   }
                 }
                 if (index === 0 && splitByRegexArray.length === 1 && lineIndex === 0) {
-                  this.text(
+                  this.font(options.fontRegular).text(
                     item,
                     lastPositionX + cellPadding.left,
                     startY + topTextToAlignVertically,
