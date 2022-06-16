@@ -815,8 +815,6 @@ class PDFDocumentWithTables extends PDFDocument {
                     );
                     this.font(options.fontBold)
                       .text(item, { continued: false })
-                      .moveDown()
-                      .font(options.fontRegular)
                       .font(options.fontRegular);
                   } else {
                     console.log(
@@ -839,7 +837,6 @@ class PDFDocumentWithTables extends PDFDocument {
                     );
                     this.font(options.fontRegular)
                       .text(item, { continued: false })
-                      .moveDown()
                       .font(options.fontRegular);
                   } else {
                     console.log(
