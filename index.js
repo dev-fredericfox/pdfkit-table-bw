@@ -780,6 +780,7 @@ class PDFDocumentWithTables extends PDFDocument {
 
             // Custom Brickwise implementation for bolding words in a cell
             const splitByNewLines = String(text).split("\n");
+            console.log(splitByNewLines)
             splitByNewLines.forEach((line, lineIndex) => {
               console.log("New Line", lineIndex, splitByNewLines.length-1)
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
