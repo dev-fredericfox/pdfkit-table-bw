@@ -788,7 +788,7 @@ class PDFDocumentWithTables extends PDFDocument {
               console.log("splitByRegexArray Array:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
                 console.log("For Each Loop Start: ", item);
-                if (index === 0 && splitByRegexArray.length > 1 && splitByNewLines.length > 1) {
+                if (index === 0 && splitByRegexArray.length > 1) {
                   console.log("Index 0:", item);
                   this.text(
                     item,
@@ -828,23 +828,24 @@ class PDFDocumentWithTables extends PDFDocument {
                     .text(item, { continued: false })
                     .font(options.fontRegular);
                 }
+                if (splitByNewLines.length === 1) {
+                  this.text(
+                    item,
+                    lastPositionX + cellPadding.left,
+                    startY + topTextToAlignVertically,
+                    {
+                      width: width - (cellPadding.left + cellPadding.right),
+                      align: align,
+                      continued: false,
+                    }
+                  );
+                }
               });
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex);
                 this.moveDown().font(options.fontRegular);
               }
-              if (splitByNewLines.length === 1) {
-                this.text(
-                  item,
-                  lastPositionX + cellPadding.left,
-                  startY + topTextToAlignVertically,
-                  {
-                    width: width - (cellPadding.left + cellPadding.right),
-                    align: align,
-                    continued: false,
-                  }
-                );
-              }
+
               console.log("End of new line");
             });
             // With new line support
