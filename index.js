@@ -835,6 +835,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 ).font(options.fontRegular);
               }
               if (lineIndex !== splitByNewLines.length - 1) {
+                console.log("moving down", lineIndex)
                 this.moveDown().font(options.fontRegular);
               }
             });
