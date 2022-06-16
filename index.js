@@ -861,10 +861,10 @@ class PDFDocumentWithTables extends PDFDocument {
                 //   );
                 // }
               });
-              if (lineIndex !== splitByNewLines.length - 1) {
-                console.log("moving down", lineIndex);
-                this.moveDown().font(options.fontRegular);
-              }
+              // if (lineIndex !== splitByNewLines.length - 1) {
+              //   console.log("moving down", lineIndex);
+              //   this.moveDown().font(options.fontRegular);
+              // }
 
               console.log("End of new line");
             });
