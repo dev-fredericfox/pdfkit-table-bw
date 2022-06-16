@@ -792,7 +792,7 @@ class PDFDocumentWithTables extends PDFDocument {
               const splitByRegexArray = line.split(boldRegexPattern);
               console.log("Regex Found:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
-                if (index === 0) {
+                if (index === 0 && splitByRegexArray.length > 1) {
                   console.log(
                     "Index 0:",
                     item,
@@ -832,7 +832,7 @@ class PDFDocumentWithTables extends PDFDocument {
                       .font(options.fontRegular);
                   }
                 } else {
-                  if (index + 1 === splitByRegexArray.length) {
+                  if (index === splitByRegexArray.length - 1) {
                     console.log(
                       "Regular and last segment:",
                       item,
