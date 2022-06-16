@@ -784,11 +784,10 @@ class PDFDocumentWithTables extends PDFDocument {
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
               if (boldRegexPattern.test(String(text))) {
                 const splitByRegexArray = String(text).split(boldRegexPattern);
-                const replacedArray = [];
                 console.log("Regex Found:", splitByRegexArray);
                 splitByRegexArray.forEach((item, index) => {
                   if (index === 0 && splitByRegexArray.length > 1) {
-                    console.log("first part");
+                    console.log("Index 0:", item, lastPositionX);
                     this.text(
                       item,
                       lastPositionX + cellPadding.left,
@@ -799,23 +798,24 @@ class PDFDocumentWithTables extends PDFDocument {
                         continued: true,
                       }
                     );
-                    // console.log("Replaced Array 0", replacedArray[0]);
                   } else if (index % 2 === 1) {
                     if (index + 1 === splitByRegexArray.length) {
-                      console.log("last part");
+                      console.log("Bold and last segment:", item, lastPositionX);
                       this.font(options.fontBold)
                         .text(item, { continued: false })
                         .font(options.fontRegular);
                     } else {
+                      console.log("Bold:", item, lastPositionX);
                       this.font(options.fontBold)
                         .text(item, { continued: true })
                         .font(options.fontRegular);
                     }
                   } else {
                     if (index + 1 === splitByRegexArray.length) {
-                      console.log("last part");
+                      console.log("Regular and last segment:", item, lastPositionX);
                       this.font(options.fontRegular).text(item, { continued: false });
                     } else {
+                      console.log("Regular:", item, lastPositionX);
                       this.font(options.fontRegular).text(item, { continued: true });
                     }
                   }
