@@ -395,6 +395,7 @@ class PDFDocumentWithTables extends PDFDocument {
             }
 
             text = String(text).replace("bold:", "").replace("size", "");
+            text = String(text).replace("**", "");
             text = String(text).replace("regular:", "").replace("size", "");
 
             // cell padding
