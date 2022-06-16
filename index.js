@@ -838,6 +838,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 console.log("moving down", lineIndex)
                 this.moveDown().font(options.fontRegular);
               }
+              console.log("End of new line")
             });
             // With new line support
             // const boldRegexPattern = /\*\*(.*?)\*\*/gm;
