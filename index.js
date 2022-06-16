@@ -785,8 +785,7 @@ class PDFDocumentWithTables extends PDFDocument {
               console.log("****New Line:", line, lineIndex, splitByNewLines.length - 1);
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
               const splitByRegexArray = line.split(boldRegexPattern);
-              console.log("splitByRegexArray Array:", splitByRegexArray);
-              splitByRegexArray.push("test")
+              console.log("splitByRegexArray Array:", splitByRegexArray, splitByRegexArray.length);
               splitByRegexArray.forEach((item, index) => {
                 console.log("For Each Loop Start: ", item);
                 if (index === 0 && splitByRegexArray.length > 1) {
