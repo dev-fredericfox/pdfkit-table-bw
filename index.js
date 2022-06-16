@@ -812,7 +812,7 @@ class PDFDocumentWithTables extends PDFDocument {
                       .text(item, { continued: true })
                       .font(options.fontRegular);
                   }
-                } else if (index % 2 === 0 && splitByRegexArray.length > 0) {
+                } else if (index % 2 === 0 && splitByRegexArray.length > 1) {
                   if (index + 1 === splitByRegexArray.length) {
                     console.log("Regular and last segment:", item);
                     this.font(options.fontRegular)
@@ -824,6 +824,7 @@ class PDFDocumentWithTables extends PDFDocument {
                   }
                 }
                 if (index === 0 && splitByRegexArray.length === 1) {
+                  console.log("Index === 0 && splitByRegexArray === 1 :", index, splitByRegexArray.length, item);
                   this.font(options.fontRegular)
                     .text(item, { continued: false })
                     .font(options.fontRegular);
