@@ -408,14 +408,14 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            console.log(cellHeight, text.substring(0, 20));
+            console.log(i, cellHeight, text.substring(0, 20));
             const newLineRegexp = /\n/g;
             const amountOfNewLinesFound = [...text.matchAll(newLineRegexp)].length;
             // console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
             // console.log("CellHeight:", cellHeight);
             const cellHeightModifier = (cellHeight) => {
               if (i === 0) {
-                return cellHeight * 0.5;
+                return cellHeight * 0.92;
               }
               return amountOfNewLinesFound * 0 + cellHeight;
             };
