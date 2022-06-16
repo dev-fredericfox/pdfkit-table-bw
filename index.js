@@ -828,7 +828,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     .text(item, { continued: false })
                     .font(options.fontRegular);
                 }
-                if (splitByNewLines.length <= 1 && splitByRegexArray === 0) {
+                if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
@@ -836,7 +836,6 @@ class PDFDocumentWithTables extends PDFDocument {
                     {
                       width: width - (cellPadding.left + cellPadding.right),
                       align: align,
-                      continued: false,
                     }
                   );
                 }
