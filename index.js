@@ -395,7 +395,6 @@ class PDFDocumentWithTables extends PDFDocument {
             }
 
             text = String(text).replace("bold:", "").replace("size", "");
-            text = String(text).replace("**", "");
             text = String(text).replace("regular:", "").replace("size", "");
 
             // cell padding
@@ -423,6 +422,7 @@ class PDFDocumentWithTables extends PDFDocument {
               }
             };
             result = Math.max(result, cellHeightModifier(cellHeight));
+            console.log(result)
           });
 
           // isHeader && (result = Math.max(result, options.minRowHeight));
