@@ -825,6 +825,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 });
               } else {
                 // If no regex detected, just proceed with the pre-forked code.
+                console.log("No regex found", lineIndex, lastPositionX, startY + topTextToAlignVertically);
                 this.text(
                   text,
                   lastPositionX + cellPadding.left,
@@ -834,7 +835,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     align: align,
                     continued: false,
                   }
-                ).font(options.fontRegular);
+                ).moveDown().font(options.fontRegular);
               }
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex)
