@@ -122,11 +122,18 @@ class PDFDocumentWithTables extends PDFDocument {
 
         const prepareHeader =
           options.prepareHeader ||
-          (() => this.fillColor("black").font(options.fontBold).fontSize(options.globalFontSize).fill());
+          (() =>
+            this.fillColor("black")
+              .font(options.fontBold)
+              .fontSize(options.globalFontSize)
+              .fill());
         const prepareRow =
           options.prepareRow ||
           ((row, indexColumn, indexRow, rectRow, rectCell) =>
-            this.fillColor("black").font(options.fontRegular).fontSize(options.globalFontSize).fill());
+            this.fillColor("black")
+              .font(options.fontRegular)
+              .fontSize(options.globalFontSize)
+              .fill());
         //const prepareCell      = options.prepareCell || ((cell, indexColumn, indexRow, indexCell, rectCell) => this.fillColor('black').font("Helvetica").fontSize(8).fill());
 
         let tableWidth = 0;
@@ -163,7 +170,11 @@ class PDFDocumentWithTables extends PDFDocument {
           // if string
           if (typeof data === "string") {
             // font size
-            this.fillColor("black").fontSize(options.globalFontSize).fontSize(size).opacity(opacity).fill();
+            this.fillColor("black")
+              .fontSize(options.globalFontSize)
+              .fontSize(size)
+              .opacity(opacity)
+              .fill();
             // this.fillColor('black').font("Helvetica").fontSize(8).fontSize(size).opacity(opacity).fill();
 
             // const titleHeight = this.heightOfString(data, {
@@ -397,14 +408,14 @@ class PDFDocumentWithTables extends PDFDocument {
               width: columnSizes[i] - (cellp.left + cellp.right),
               align: "left",
             });
-            console.log(cellHeight)
+            console.log(cellHeight);
             const newLineRegexp = /\n/g;
             const amountOfNewLinesFound = [...text.matchAll(newLineRegexp)].length;
             // console.log("amountOfNewLinesFound:", amountOfNewLinesFound);
             // console.log("CellHeight:", cellHeight);
             const cellHeightModifier = (cellHeight) => {
               if (i === 0) {
-                return cellHeight*0.5;
+                return cellHeight * 0.5;
               }
               return amountOfNewLinesFound * 0 + cellHeight;
             };
@@ -783,22 +794,15 @@ class PDFDocumentWithTables extends PDFDocument {
             // ------------------------------------------------------------------------------
 
             // Custom Brickwise implementation for bolding words in a cell
-            console.log("String(text) before splitting by new line", String(text));
+            // console.log("String(text) before splitting by new line", String(text));
             const splitByNewLines = String(text).split("\n");
-            console.log(splitByNewLines);
+            // console.log(splitByNewLines);
             splitByNewLines.forEach((line, lineIndex) => {
-              console.log("****New Line:", line, lineIndex, splitByNewLines.length - 1);
+              // console.log("****New Line:", line, lineIndex, splitByNewLines.length - 1);
               const boldRegexPattern = /\*\*(.*?)\*\*/gm;
               const splitByRegexArray = line.split(boldRegexPattern);
-              console.log(
-                "splitByRegexArray Array:",
-                splitByRegexArray,
-                splitByRegexArray.length
-              );
               splitByRegexArray.forEach((item, index) => {
-                console.log("For Each Loop Start: ", item, index, lineIndex);
                 if (index === 0 && splitByRegexArray.length > 1 && lineIndex === 0) {
-                  console.log("Index 0:", item);
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
@@ -811,34 +815,24 @@ class PDFDocumentWithTables extends PDFDocument {
                   );
                 } else if (index % 2 === 1 && splitByRegexArray.length > 1) {
                   if (index + 1 === splitByRegexArray.length) {
-                    console.log("Bold and last segment:", item);
                     this.font(options.fontBold)
                       .text(item, { continued: false })
                       .font(options.fontRegular);
                   } else {
-                    console.log("Bold:", item);
                     this.font(options.fontBold)
                       .text(item, { continued: true })
                       .font(options.fontRegular);
                   }
                 } else if (index % 2 === 0 && splitByRegexArray.length > 1) {
                   if (index + 1 === splitByRegexArray.length) {
-                    console.log("Regular and last segment:", item);
                     this.font(options.fontRegular)
                       .text(item, { continued: false })
                       .font(options.fontRegular);
                   } else {
-                    console.log("Regular:", item);
                     this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
                 if (index === 0 && splitByRegexArray.length === 1 && lineIndex === 0) {
-                  console.log(
-                    "Index === 0 && splitByRegexArray === 1 :",
-                    index,
-                    splitByRegexArray.length,
-                    item
-                  );
                   this.text(
                     item,
                     lastPositionX + cellPadding.left,
@@ -870,8 +864,6 @@ class PDFDocumentWithTables extends PDFDocument {
               //   console.log("moving down", lineIndex);
               //   this.moveDown().font(options.fontRegular);
               // }
-
-              console.log("End of new line");
             });
             // With new line support
             // const boldRegexPattern = /\*\*(.*?)\*\*/gm;
