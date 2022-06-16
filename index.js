@@ -787,20 +787,8 @@ class PDFDocumentWithTables extends PDFDocument {
               const splitByRegexArray = line.split(boldRegexPattern);
               console.log("splitByRegexArray Array:", splitByRegexArray);
               splitByRegexArray.forEach((item, index) => {
-                console.log("For Each Loop Start: ",item)
-                if (index === 0 && splitByRegexArray.length > 1) {
-                  console.log("Index 0:", item);
-                  this.text(
-                    item,
-                    lastPositionX + cellPadding.left,
-                    startY + topTextToAlignVertically,
-                    {
-                      width: width - (cellPadding.left + cellPadding.right),
-                      align: align,
-                      continued: true,
-                    }
-                  );
-                } else if (index % 2 === 1) {
+                console.log("For Each Loop Start: ", item);
+                if (index % 2 === 1) {
                   if (index + 1 === splitByRegexArray.length) {
                     console.log("Bold and last segment:", item);
                     this.font(options.fontBold)
@@ -823,19 +811,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     this.font(options.fontRegular).text(item, { continued: true });
                   }
                 }
-                if (index === 0 && splitByRegexArray.length > 1) {
-                  console.log("Index 0:", item);
-                  this.text(
-                    item,
-                    lastPositionX + cellPadding.left,
-                    startY + topTextToAlignVertically,
-                    {
-                      width: width - (cellPadding.left + cellPadding.right),
-                      align: align,
-                      continued: true,
-                    }
-                  )
-              }
+              });
               if (lineIndex !== splitByNewLines.length - 1) {
                 console.log("moving down", lineIndex);
                 this.moveDown().font(options.fontRegular);
