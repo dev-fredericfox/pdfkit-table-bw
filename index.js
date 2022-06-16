@@ -805,7 +805,7 @@ class PDFDocumentWithTables extends PDFDocument {
                     if (index + 1 === splitByRegexArray.length) {
                       console.log("Bold and last segment:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
                       this.font(options.fontBold)
-                        .text(item, { continued: false })
+                        .text(item, { continued: false }).moveDown().font(options.fontRegular)
                         .font(options.fontRegular);
                     } else {
                       console.log("Bold:", item.substring(0,25), lastPositionX,startY + topTextToAlignVertically);
@@ -816,7 +816,7 @@ class PDFDocumentWithTables extends PDFDocument {
                   } else {
                     if (index + 1 === splitByRegexArray.length) {
                       console.log("Regular and last segment:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
-                      this.font(options.fontRegular).text(item, { continued: false });
+                      this.font(options.fontRegular).text(item, { continued: false }).moveDown().font(options.fontRegular);
                     } else {
                       console.log("Regular:", item.substring(0,25), lastPositionX, startY + topTextToAlignVertically);
                       this.font(options.fontRegular).text(item, { continued: true });
