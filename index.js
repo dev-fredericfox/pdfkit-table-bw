@@ -812,7 +812,7 @@ class PDFDocumentWithTables extends PDFDocument {
                       .text(item, { continued: true })
                       .font(options.fontRegular);
                   }
-                } else if (index % 2 === 0 && splitByRegexArray.length > 1) {
+                } else if (index % 2 === 0 && splitByRegexArray.length > 0) {
                   if (index + 1 === splitByRegexArray.length) {
                     console.log("Regular and last segment:", item);
                     this.font(options.fontRegular)
