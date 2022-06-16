@@ -826,7 +826,7 @@ class PDFDocumentWithTables extends PDFDocument {
                 if (index === 0 && splitByRegexArray.length === 1) {
                   console.log("Index === 0 && splitByRegexArray === 1 :", index, splitByRegexArray.length, item);
                   this.font(options.fontRegular)
-                    .text(item, { continued: false })
+                    .text(item, { continued: true })
                     .font(options.fontRegular);
                 }
                 // if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
