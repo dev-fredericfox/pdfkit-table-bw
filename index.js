@@ -813,7 +813,7 @@ class PDFDocumentWithTables extends PDFDocument {
                       .font(options.fontRegular);
                   }
                 } else if (index % 2 === 0 && splitByRegexArray.length > 1) {
-                  if (index === splitByRegexArray.length - 1) {
+                  if (index +1 === splitByRegexArray.length) {
                     console.log("Regular and last segment:", item);
                     this.font(options.fontRegular)
                       .text(item, { continued: false })
@@ -840,10 +840,10 @@ class PDFDocumentWithTables extends PDFDocument {
                   );
                 }
               });
-              // if (lineIndex !== splitByNewLines.length - 1) {
-              //   console.log("moving down", lineIndex);
-              //   this.moveDown().font(options.fontRegular);
-              // }
+              if (lineIndex !== splitByNewLines.length - 1) {
+                console.log("moving down", lineIndex);
+                this.moveDown().font(options.fontRegular);
+              }
 
               console.log("End of new line");
             });
