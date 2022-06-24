@@ -81,6 +81,8 @@ class PDFDocumentWithTables extends PDFDocument {
         options.fontRegular || (options.fontRegular = "Helvetica");
         options.fontBold || (options.fontBold = "Helvetica-Bold");
         options.globalFontSize || (options.globalFontSize = 10);
+        // Custom Brickwise: Move down after table end on or off. Default is ON.
+        options.skipMoveDownAfterTableEnd || (options.skipMoveDownAfterTableEnd = false)
         // divider lines
         options.divider || (options.divider = {});
         options.divider.header ||
@@ -1054,7 +1056,9 @@ class PDFDocumentWithTables extends PDFDocument {
         // update position
         this.x = startX;
         this.y = rowBottomY; // position y final;
-        this.moveDown(); // break
+        if (options.skipMoveDownAfterTableEnd === false) {
+          this.moveDown(); // break
+        }
 
         // add fire
         this.off("pageAdded", onFirePageAdded);
