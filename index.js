@@ -514,7 +514,7 @@ class PDFDocumentWithTables extends PDFDocument {
             // lockAddHeader = true;
             lockAddPage = true;
             this.logg("CRAZY! This a big text on cell");
-          } else if (calc*0.8 > maxY) { //added *0.9 - this fixes issues with tables repeating on the same page??? I just really don't understand why yet.
+          } else if (calc*0.7 > maxY) { //added *0.7 - this fixes issues with tables repeating on the same page??? I just really don't understand why yet.
             // && !lockAddPage
             // lockAddHeader = false;
             lockAddPage = true;
