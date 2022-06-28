@@ -1,4 +1,4 @@
-declare module 'pdfkit-table' 
+declare module 'pdfkit-table-bw' 
 {
 	import PDFDocument from 'pdfkit';
 
@@ -80,6 +80,10 @@ declare module 'pdfkit-table'
 		addPage?: boolean; //default false
 		hideHeader?: boolean;
 		minRowHeight?: number;
+		fontRegular?: string;
+		fontBold?: string;
+		globalFontSize?: number;
+		skipMoveDownAfterTableEnd?: boolean;
 		prepareHeader?: () => PDFDocumentWithTables;
 		prepareRow?: (
 			row?: any,
