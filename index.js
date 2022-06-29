@@ -840,71 +840,10 @@ class PDFDocumentWithTables extends PDFDocument {
                     .text(item, { continued: false })
                     .font(options.fontRegular);
                 }
-                // if (splitByNewLines.length < 2 && splitByRegexArray === 0) {
-                //   this.text(
-                //     item,
-                //     lastPositionX + cellPadding.left,
-                //     startY + topTextToAlignVertically,
-                //     {
-                //       width: width - (cellPadding.left + cellPadding.right),
-                //       align: align,
-                //     }
-                //   );
-                // }
+              
               });
-              // if (lineIndex !== splitByNewLines.length - 1) {
-              //   console.log("moving down", lineIndex);
-              //   this.moveDown().font(options.fontRegular);
-              // }
+            
             });
-            // With new line support
-            // const boldRegexPattern = /\*\*(.*?)\*\*/gm;
-            // if (boldRegexPattern.test(String(text))) {
-            //   const splitByRegexArray = String(text).split(boldRegexPattern);
-            //   const replacedArray = [];
-            //   console.log("Regex Found:", splitByRegexArray);
-            //   splitByRegexArray.forEach((item, index) => {
-            //     if (index === 0) {
-            //       console.log("first part");
-            //       this.text(
-            //         item,
-            //         lastPositionX + cellPadding.left,
-            //         startY + topTextToAlignVertically,
-            //         {
-            //           width: width - (cellPadding.left + cellPadding.right),
-            //           align: align,
-            //           continued: true,
-            //         }
-            //       );
-            //       // console.log("Replaced Array 0", replacedArray[0]);
-            //     } else if (index % 2 === 1) {
-            //       if (index + 1 === splitByRegexArray.length) {
-            //         console.log("last part");
-            //         this.font(options.fontBold).text(item, { continued: false });
-            //       } else {
-            //         this.font(options.fontBold).text(item, { continued: true });
-            //       }
-            //     } else {
-            //       if (index + 1 === splitByRegexArray.length) {
-            //         console.log("last part");
-            //         this.font(options.fontRegular).text(item, { continued: false });
-            //       } else {
-            //         this.font(options.fontRegular).text(item, { continued: true });
-            //       }
-            //     }
-            //   });
-            // } else {
-            //   // If no regex detected, just proceed with the pre-forked code.
-            //   this.text(
-            //     text,
-            //     lastPositionX + cellPadding.left,
-            //     startY + topTextToAlignVertically,
-            //     {
-            //       width: width - (cellPadding.left + cellPadding.right),
-            //       align: align,
-            //     }
-            //   );
-            // }
 
             lastPositionX += width;
 
