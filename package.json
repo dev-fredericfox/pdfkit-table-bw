@@ -1,7 +1,7 @@
 {
-  "name": "pdfkit-table-bw",
+  "name": "pdfkit-table-extended",
   "version": "0.1.98",
-  "description": "PdfKit Table. Helps to draw informations in simple tables using pdfkit. #server-side. Generate pdf tables with javascript (PDFKIT plugin) ",
+  "description": "PdfKit Table. Helps to draw informations in simple tables using pdfkit. #server-side. Generate pdf tables with javascript (PDFKIT plugin)",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -9,7 +9,8 @@
     "git-push": "git add . && git commit -m 'update' && git push "
   },
   "repository": "git+https://github.com/natancabral/pdfkit-table.git",
-  "author": "natancabral",
+  "author": "Frederic Fox",
+  "contributor": "natancabral (Original Author of the forked PDFKIT-Tables)",
   "keywords": [
     "javascript",
     "node",

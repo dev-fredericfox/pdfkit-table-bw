@@ -321,6 +321,10 @@ const table = {
 | **minRowHeight**     | <code>Number</code>  | 0              | min row height |
 | **prepareHeader**    | <code>Function</code> | Function           | ()                  |
 | **prepareRow**       | <code>Function</code> | Function           | (row, indexColumn, indexRow, rectRow, rectCell) => {} |
+| New: **fontRegular** |<code>String<code>     | Helvetica          | Add your custom regular font. Either as path or registered font|
+| New: **fontRegular** |<code>String<code>     | Helvetica-Bold     | Add your custom bold font. Either as path or registered font   |
+| New: **globalFontSize**|<code>Number<code>   | 10                 | Add your custom font size for the entire table                 |
+| New: **skipMoveDownAfterTableEnd**|<code>Boolean<code>   | false                 | Skip the line jump after a table ends. Useful for chaining tables|
 
 #### Options example
 
@@ -407,6 +411,13 @@ datas: [
   - Times-BoldItalic
 - ZapfDingbats
 
+**NEW** Add your custom font for bold and regular as well as a global font size!
+```js
+  options: {
+    fontRegular: "ARegular", fontBold: "fonts/AesteticoBold/font.woff", globalFontSize: 12, prepareHeader...
+    }
+```
+
 ## ToDo
 
 - [Suggestions / Issues / Fixes](https://github.com/natancabral/pdfkit-table/issues)
@@ -417,8 +428,26 @@ datas: [
 
 ## Changelogs
 
-### 0.1.90.01
-Custom Brickwise Fork
+### 1.03.00
+Bold any text with markup! (Two stars on each side)
+
+### 1.02.00
+Add option to skip the `doc.moveDown()` command after a table ends.
+```js
+options: {
+  skipMoveDownAfterTableEnd: true
+}
+```
+
+### 1.01.00
+Add global font size option. Default is 10.
+```js
+  options: {
+    fontRegular: "ARegular", fontBold: "fonts/AesteticoBold/font.woff", globalFontSize: 12, prepareHeader...
+    }
+```
+### 1.00.00
+**Custom Brickwise Fork NEW Version number**
 + Added 2 new table options: fontRegular and fontBold. Supports registered fonts, fonts and font files. Example: 
 ```js
   options: {
